@@ -73,6 +73,14 @@ void setup()
   radio.startListening();                 // Start listening
   radio.powerUp();
   radio.printDetails();                   // Dump the configuration of the rf unit for debugging
+  // Max power 
+  radio.setPALevel( RF24_PA_MAX ) ; 
+ 
+  // Min speed (for better range I presume)
+  radio.setDataRate( RF24_250KBPS ) ; 
+ 
+  // 8 bits CRC
+  radio.setCRCLength( RF24_CRC_8 ) ; 
 }
 
 void loop(void) 
@@ -104,7 +112,7 @@ void loop(void)
           Serial.println(data.time);
         }
     }
-    delay(500);  // Try again later
+    delay(50);  // Try again later
   }
 
 
